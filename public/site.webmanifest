@@ -1,0 +1,27 @@
+{
+  "name": "Makeatask - Nigeria's Task Marketplace",
+  "short_name": "Makeatask",
+  "description": "Connect with verified service providers in Nigeria for all your tasks. From plumbing to graphic design, find trusted professionals near you.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1E7D30",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/logo.svg",
+      "sizes": "72x72",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ]
+}
