@@ -18,8 +18,8 @@ export default function FAQPage() {
           <h1 className="font-bold text-[32px] md:text-[48px] leading-[100%] text-heading mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-[14px] md:text-[16px] leading-[150%] text-[#325723]">
-            Find answers to all your questions about using Makeatask.
+          <p className="text-[14px] md:text-[16px] leading-[150%] text-primary-900/70">
+            Find answers to all your questions about learning with Upkora Academy.
           </p>
         </div>
       </section>

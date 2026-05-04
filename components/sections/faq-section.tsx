@@ -8,8 +8,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { FAQItem } from "@/lib/data/faqs"
 
-const faqs = [
+const defaultFaqItems: FAQItem[] = [
   {
     question: "How do I enroll in a course?",
     answer: "Simply browse our catalog, select the course you're interested in, and click the 'Enroll Now' button. You'll be guided through our secure checkout process.",
@@ -32,28 +33,40 @@ const faqs = [
   },
 ]
 
-export function FAQSection() {
+interface FAQSectionProps {
+  faqs?: FAQItem[]
+  showHeader?: boolean
+}
+
+export function FAQSection({ faqs = defaultFaqItems, showHeader = true }: FAQSectionProps) {
   return (
     <section className="py-24 bg-background">
       <div className="page-container">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6 tracking-tight font-syne">
-              Frequently Asked <span className="text-primary-600">Questions</span>
-            </h2>
-            <p className="text-foreground/70 text-lg leading-relaxed font-inter mb-8">
-              Got questions? We've got answers. If you can't find what you're looking for, feel free to reach out to our support team.
-            </p>
-            <div className="p-6 rounded-[2rem] bg-card border border-border">
-              <h3 className="text-xl font-bold text-foreground mb-3 font-syne">Still have questions?</h3>
-              <p className="text-foreground/60 text-sm mb-6 font-inter">We're here to help you with anything you need.</p>
-              <Button variant="brand" size="lg" shape="pill" className="w-full">
-                Contact Support
-              </Button>
+        <div className={`grid ${showHeader ? 'lg:grid-cols-2' : 'grid-cols-1 max-w-4xl mx-auto'} gap-16 items-start`}>
+          {showHeader && (
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6 tracking-tight font-syne">
+                Frequently Asked <span className="text-primary-600">Questions</span>
+              </h2>
+              <p className="text-foreground/70 text-lg leading-relaxed font-inter mb-8">
+                Got questions? We've got answers. If you can't find what you're looking for, feel free to reach out to our support team.
+              </p>
+              <div className="p-6 rounded-[2rem] bg-card border border-border">
+                <h3 className="text-xl font-bold text-foreground mb-3 font-syne">Still have questions?</h3>
+                <p className="text-foreground/60 text-sm mb-6 font-inter">We're here to help you with anything you need.</p>
+                <Button variant="brand" size="lg" shape="pill" className="w-full">
+                  Contact Support
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="bg-card rounded-[2.5rem] p-4 md:p-8 border border-border shadow-sm">
+            {!showHeader && (
+               <h2 className="text-2xl font-bold text-foreground mb-8 font-syne text-center">
+                 General <span className="text-primary-600">Enquiries</span>
+               </h2>
+            )}
             <Accordion type="single" collapsible className="w-full space-y-3">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border-none">
