@@ -6,7 +6,6 @@ import { ServicesShowcaseSection } from "@/components/sections/services-showcase
 import { TrustSafetySection } from "@/components/sections/trust-safety-section"
 import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { FAQSection } from "@/components/sections/faq-section"
-import { CTABannerSection } from "@/components/sections/cta-banner-section"
 import { Footer } from "@/components/layout/footer"
 
 export default function Home() {
@@ -44,7 +43,6 @@ export default function Home() {
         <TrustSafetySection />
         <TestimonialsSection />
         <FAQSection />
-        <CTABannerSection />
         <Footer />
       </main>
     </>

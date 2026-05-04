@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { Footer } from "@/components/layout/footer"
 import { BreadcrumbHero } from "@/components/layout/breadcrumb-hero"
 
@@ -51,22 +52,24 @@ export function LegalPageLayout({
       />
 
       <div className="w-full flex flex-col lg:flex-row">
-        <button
+        <Button
+          variant="ghost"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="lg:hidden flex items-center gap-2 px-4 md:px-6 py-4 text-heading font-semibold text-sm border-b border-[#E5E7E5] bg-surface"
+          className="lg:hidden flex items-center justify-between w-full px-4 md:px-6 py-4 text-heading font-semibold text-sm border-b border-[#E5E7E5] bg-surface rounded-none h-auto"
         >
           Table of contents
           <ChevronRight className={`w-4 h-4 transition-transform ${isSidebarOpen ? "rotate-90" : ""}`} />
-        </button>
+        </Button>
 
         {isSidebarOpen && (
           <div className="lg:hidden px-4 md:px-6 py-4 border-b border-[#E5E7E5] bg-surface">
             <nav className="space-y-0.5">
               {sections.map((section, index) => (
-                <button
+                <Button
                   key={section.id}
+                  variant="ghost"
                   onClick={() => scrollToSection(section.id)}
-                  className={`w-full text-left flex items-center justify-between p-2.5 rounded-lg text-sm transition-colors ${
+                  className={`w-full justify-between p-2.5 rounded-lg text-sm transition-colors h-auto font-normal ${
                     activeSection === section.id
                       ? "text-heading font-semibold bg-heading/5"
                       : "text-body hover:text-heading"
@@ -78,7 +81,7 @@ export function LegalPageLayout({
                   {activeSection === section.id && (
                     <ChevronRight className="w-4 h-4 text-heading shrink-0" />
                   )}
-                </button>
+                </Button>
               ))}
             </nav>
           </div>
@@ -88,10 +91,11 @@ export function LegalPageLayout({
           <h3 className="font-semibold text-base text-heading mb-4">Table of contents</h3>
           <nav className="space-y-0.5">
             {sections.map((section, index) => (
-              <button
+              <Button
                 key={section.id}
+                variant="ghost"
                 onClick={() => scrollToSection(section.id)}
-                className={`w-full text-left flex items-center justify-between p-2.5 rounded-lg text-sm transition-colors ${
+                className={`w-full justify-between p-2.5 rounded-lg text-sm transition-colors h-auto font-normal ${
                   activeSection === section.id
                     ? "text-heading font-semibold bg-heading/5"
                     : "text-body hover:text-heading"
@@ -103,7 +107,7 @@ export function LegalPageLayout({
                 {activeSection === section.id && (
                   <ChevronRight className="w-4 h-4 text-heading shrink-0" />
                 )}
-              </button>
+              </Button>
             ))}
           </nav>
         </div>

@@ -1,86 +1,83 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ShieldCheck, Award, MessageSquare, HeartHandshake } from "lucide-react"
+import { ShieldCheck, Lock, UserCheck, HeartHandshake, Zap, Globe } from "lucide-react"
 
-const features = [
+const trustItems = [
   {
     icon: ShieldCheck,
-    title: "Secure Platform",
-    description: "Your data and payment information are protected by industry-standard encryption.",
+    title: "Verified Instructors",
+    description: "Every mentor undergoes a rigorous verification process to ensure industry expertise.",
+    color: "bg-blue-500/10 text-blue-600",
   },
   {
-    icon: Award,
-    title: "Verified Certs",
-    description: "Earn certificates that are recognized by top employers in the industry.",
-  },
-  {
-    icon: MessageSquare,
-    title: "24/7 Support",
-    description: "Our dedicated support team is always here to help you with any learning challenges.",
+    icon: Lock,
+    title: "Secure Payments",
+    description: "Your financial data is protected with industry-standard encryption and security.",
+    color: "bg-green-500/10 text-green-600",
   },
   {
     icon: HeartHandshake,
-    title: "Job Assistance",
-    description: "We provide career guidance and help you connect with potential employers.",
+    title: "Satisfaction Guarantee",
+    description: "Not happy with a course? Get a full refund within 30 days, no questions asked.",
+    color: "bg-red-500/10 text-red-600",
+  },
+  {
+    icon: UserCheck,
+    title: "Active Support",
+    description: "Our dedicated support team is available 24/7 to help you with any issues.",
+    color: "bg-purple-500/10 text-purple-600",
+  },
+  {
+    icon: Zap,
+    title: "Instant Access",
+    description: "Start learning the moment you enroll with immediate course material delivery.",
+    color: "bg-yellow-500/10 text-yellow-600",
+  },
+  {
+    icon: Globe,
+    title: "Global Community",
+    description: "Join a diverse network of learners and professionals from all over the world.",
+    color: "bg-cyan-500/10 text-cyan-600",
   },
 ]
 
 export function TrustSafetySection() {
   return (
-    <section className="py-24 bg-brand text-white overflow-hidden relative">
-      {/* Decorative patterns */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-0 left-0 w-64 h-64 border-8 border-white rounded-full -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 border-8 border-white rounded-full translate-x-1/3 translate-y-1/3" />
-      </div>
+    <section className="py-24 bg-background border-y border-border">
+      <div className="page-container">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4 tracking-tight font-syne">
+            Why You Can <span className="text-primary-600">Trust</span> Us
+          </h2>
+          <p className="text-foreground/70 text-lg leading-relaxed font-inter">
+            Your learning journey is our top priority. We've built a secure and transparent environment so you can focus on mastering new skills.
+          </p>
+        </div>
 
-      <div className="page-container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-              A Learning Environment Built on <span className="text-accent-green">Trust & Excellence</span>
-            </h2>
-            <p className="text-brand-light text-xl mb-10 leading-relaxed">
-              We are committed to providing a safe, reliable, and high-quality educational experience for every student.
-            </p>
-            
-            <div className="grid sm:grid-cols-2 gap-8">
-              {features.map((feature, i) => (
-                <div key={i} className="space-y-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                    <feature.icon className="w-6 h-6 text-accent-green" />
-                  </div>
-                  <h3 className="text-lg font-bold">{feature.title}</h3>
-                  <p className="text-brand-light text-sm leading-relaxed">{feature.description}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative hidden lg:block"
-          >
-            <div className="bg-white/5 backdrop-blur-sm p-12 rounded-[40px] border border-white/10">
-              <div className="text-center space-y-6">
-                <div className="inline-block p-4 bg-accent-green rounded-2xl shadow-lg">
-                  <ShieldCheck className="w-12 h-12 text-brand" />
-                </div>
-                <h3 className="text-3xl font-bold italic">"Upkora Academy has transformed the way I learn. The quality of instructors is unmatched."</h3>
-                <div className="flex flex-col items-center">
-                  <p className="font-bold text-xl">David Adebayo</p>
-                  <p className="text-accent-green font-medium">Software Engineer @ Google</p>
-                </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {trustItems.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex items-start gap-5 p-6 rounded-2xl bg-card border border-border shadow-sm hover:shadow-xl transition-all group"
+            >
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${item.color} group-hover:scale-110 transition-transform`}>
+                <item.icon className="w-6 h-6" />
               </div>
-            </div>
-          </motion.div>
+              <div>
+                <h3 className="text-lg font-bold text-foreground mb-2 font-syne group-hover:text-primary-600 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-foreground/60 text-sm leading-relaxed font-inter">
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

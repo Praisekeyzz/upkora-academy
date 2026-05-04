@@ -1,109 +1,155 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { navLinks } from "@/lib/nav-links"
+import { Menu, X, Search, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
-const HERO_SCROLL_THRESHOLD = 80
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Courses", href: "#courses" },
+  { name: "Academics", href: "#academics" },
+  { name: "Pages", href: "#pages" },
+  { name: "Admissions", href: "#admissions" },
+  { name: "Blog", href: "#blog" },
+  { name: "Contact", href: "#contact" },
+]
 
 export function GlassNavbar() {
-  const pathname = usePathname()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > HERO_SCROLL_THRESHOLD)
+      setIsScrolled(window.scrollY > 20)
     }
-    handleScroll()
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const linkClass = (isActive: boolean) =>
-    isScrolled
-      ? isActive
-        ? "text-heading font-semibold"
-        : "text-body font-medium hover:text-heading"
-      : isActive
-        ? "text-white font-semibold"
-        : "text-[#D2E5D6] font-medium hover:text-white"
-
   return (
-    <nav className="fixed top-6 left-1/2 z-50 w-[calc(100%-3rem)] max-w-7xl -translate-x-1/2 px-6 md:px-12 lg:px-16">
-      <div className="flex items-center gap-3 md:gap-4">
-        <Link href="/" className="relative z-60 flex shrink-0 items-center justify-center font-bold text-xl transition-colors">
-          <span className={isScrolled ? "text-brand" : "text-white"}>Upkora</span>
-        </Link>
-        <div
-          className={`flex min-w-0 flex-1 items-center justify-end gap-4 rounded-full px-5 py-3 backdrop-blur-[20px] transition-all duration-300 md:gap-8 md:px-8 ${
-            isScrolled
-              ? "border border-heading/10 bg-white/90"
-              : "border border-white/20 bg-white/8"
-          }`}
-        >
-          <div className="hidden items-center gap-6 md:flex">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-[16px] leading-[100%] transition-colors ${linkClass(isActive)}`}
-                >
-                  {link.label}
-                </Link>
-              )
-            })}
+    <header className="fixed top-0 left-0 w-full z-50">
+      {/* Top Bar - Brand Primary Green */}
+      <div className="hidden lg:flex w-full h-10 overflow-hidden">
+        <div className="bg-neon w-[30%] flex items-center justify-center gap-4 px-4">
+          <span className="text-[10px] font-black uppercase tracking-widest text-black/60">Follow Us:</span>
+          <div className="flex gap-3">
+            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+              <a key={i} href="#" className="text-black/60 hover:text-black transition-colors">
+                <Icon size={14} />
+              </a>
+            ))}
           </div>
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`flex h-8 w-8 flex-col items-center justify-center gap-1.5 transition-colors md:hidden ${
-              isScrolled ? "text-heading" : "text-white"
-            }`}
-            aria-label="Toggle menu"
-          >
-            <span className={`h-0.5 w-5 bg-current transition-all ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`h-0.5 w-5 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : ""}`} />
-            <span className={`h-0.5 w-5 bg-current transition-all ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
-          </button>
+        </div>
+        <div className="bg-primary-950 flex-1 flex items-center justify-end gap-10 px-12 text-white/70 text-[11px] font-bold font-inter">
+          <div className="flex items-center gap-2">
+            <MapPin size={14} className="text-neon" />
+            25/B Milford Road, New York
+          </div>
+          <div className="flex items-center gap-2">
+            <Mail size={14} className="text-neon" />
+            info@example.com
+          </div>
+          <div className="flex items-center gap-2">
+            <Phone size={14} className="text-neon" />
+            +2 123 654 7898
+          </div>
         </div>
       </div>
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className={`md:hidden mt-2 rounded-2xl overflow-hidden backdrop-blur-[20px] transition-colors duration-300 ${
-              isScrolled
-                ? "border border-heading/10 bg-white/95"
-                : "border border-white/20 bg-white/12"
-            }`}
+
+      {/* Main Navbar */}
+      <div className={`transition-all duration-300 ${isScrolled ? "bg-white shadow-xl py-2" : "bg-white/95 py-4"}`}>
+        <div className="page-container flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <img 
+              src="/logos/logo-secondary.png" 
+              alt="Upkora Academy" 
+              className="h-10 w-auto object-contain"
+            />
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-sm font-bold text-primary-950/70 hover:text-primary-600 transition-colors font-inter flex items-center gap-1 group"
+              >
+                {link.name}
+                {["Home", "Courses", "Pages", "Blog"].includes(link.name) && (
+                  <span className="text-[10px] opacity-50 group-hover:rotate-180 transition-transform">▼</span>
+                )}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Actions */}
+          <div className="hidden lg:flex items-center gap-6">
+            <Button variant="ghost" size="icon" className="text-primary-950">
+              <Search size={22} />
+            </Button>
+            <Button variant="neon" size="default" className="gap-2 group">
+              Apply Now
+              <span className="bg-black text-neon rounded-full p-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                <ArrowRight size={14} />
+              </span>
+            </Button>
+          </div>
+
+          {/* Mobile Toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden text-primary-950"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href
-              return (
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            className="fixed inset-0 bg-primary-950 z-[60] flex flex-col p-10"
+          >
+            <div className="flex justify-between items-center mb-16">
+              <img 
+                src="/logos/logo-white.png" 
+                alt="Upkora Academy" 
+                className="h-10 w-auto object-contain"
+              />
+              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:bg-white/10">
+                <X size={32} />
+              </Button>
+            </div>
+            <div className="flex flex-col gap-6">
+              {navLinks.map((link) => (
                 <Link
-                  key={link.href}
+                  key={link.name}
                   href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block px-5 py-3 text-[16px] border-b last:border-0 transition-colors ${
-                    isScrolled
-                      ? "border-heading/10 hover:bg-heading/5"
-                      : "border-white/10 hover:bg-white/5"
-                  } ${linkClass(isActive)}`}
+                  className="text-3xl font-black text-white/70 hover:text-neon transition-colors font-syne"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link.label}
+                  {link.name}
                 </Link>
-              )
-            })}
+              ))}
+            </div>
+            <div className="mt-auto pt-10 border-t border-white/10 flex flex-col gap-6">
+              <Button variant="neon" size="xl" shape="pill" className="w-full text-xl font-syne">
+                Apply Now
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   )
 }

@@ -4,6 +4,7 @@ import { Pause, Play } from "lucide-react";
 import { Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 function getInitials(name: string): string {
   const parts = name.split(/[\s.]+/).filter(Boolean);
@@ -139,10 +140,12 @@ export const InfiniteMovingCards = ({
       </ul>
       </div>
       {showControls && (
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           onClick={() => setIsPaused((p) => !p)}
-          className="absolute bottom-4 right-4 md:right-8 z-30 w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/90 hover:bg-white/20 transition-colors"
+          className="absolute bottom-4 right-4 md:right-8 z-30 w-11 h-11 rounded-full bg-white/10 border border-white/20 text-white/90 hover:bg-white/20"
           aria-label={isPaused ? "Play" : "Pause"}
         >
           {isPaused ? (
@@ -150,7 +153,7 @@ export const InfiniteMovingCards = ({
           ) : (
             <Pause className="w-5 h-5" />
           )}
-        </button>
+        </Button>
       )}
     </div>
   );

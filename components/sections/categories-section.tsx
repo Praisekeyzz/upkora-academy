@@ -8,13 +8,13 @@ const categories = [
     icon: Code,
     title: "Web Development",
     count: "45 Courses",
-    color: "bg-blue-500/10 text-blue-600",
+    color: "bg-primary-500/10 text-primary-600",
   },
   {
     icon: Palette,
     title: "Graphic Design",
     count: "32 Courses",
-    color: "bg-purple-500/10 text-purple-600",
+    color: "bg-secondary-500/10 text-secondary-600",
   },
   {
     icon: BarChart,
@@ -38,7 +38,7 @@ const categories = [
     icon: BookOpen,
     title: "Personal Development",
     count: "20 Courses",
-    color: "bg-brand/10 text-brand",
+    color: "bg-neon/10 text-primary-600",
   },
   {
     icon: Globe,
@@ -56,13 +56,13 @@ const categories = [
 
 export function CategoriesSection() {
   return (
-    <section className="py-24 bg-surface">
+    <section className="py-24 bg-background">
       <div className="page-container">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-heading mb-4">
-            Explore Top <span className="text-brand">Categories</span>
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4 tracking-tight font-syne">
+            Explore Top <span className="text-primary-600">Categories</span>
           </h2>
-          <p className="text-body text-lg">
+          <p className="text-foreground/70 text-lg leading-relaxed font-inter">
             Choose from a wide variety of courses and start your learning journey in any field that interests you.
           </p>
         </div>
@@ -75,16 +75,16 @@ export function CategoriesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-2xl border border-brand/5 shadow-sm hover:shadow-md transition-all cursor-pointer group text-center"
+              whileHover={{ y: -6 }}
+              className="bg-card p-6 rounded-[1.5rem] border border-border shadow-sm hover:shadow-xl hover:shadow-primary-500/5 transition-all cursor-pointer group text-center"
             >
-              <div className={`w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 ${category.color}`}>
+              <div className={`w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110 group-hover:rotate-3 shadow-sm ${category.color}`}>
                 <category.icon className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold text-heading mb-1 group-hover:text-brand transition-colors">
+              <h3 className="text-lg font-bold text-foreground mb-1 group-hover:text-primary-600 transition-colors font-syne">
                 {category.title}
               </h3>
-              <p className="text-sm text-body">{category.count}</p>
+              <p className="text-sm font-medium text-foreground/50 font-inter">{category.count}</p>
             </motion.div>
           ))}
         </div>
