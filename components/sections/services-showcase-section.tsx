@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Star, Clock, Users, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const courses = [
   {
@@ -53,9 +54,11 @@ export function ServicesShowcaseSection() {
               Join thousands of students who are already mastering new skills with our top-rated industry courses.
             </p>
           </div>
-          <Button variant="ghost" className="flex items-center gap-2 text-primary-600 font-bold text-base hover:gap-3 transition-all font-syne h-auto p-0">
-            View All Courses <ArrowUpRight className="w-4 h-4" />
-          </Button>
+          <Link href="/waitlist">
+            <Button variant="ghost" className="flex items-center gap-2 text-primary-600 font-bold text-base hover:gap-3 transition-all font-syne h-auto p-0">
+              View All Courses <ArrowUpRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -78,9 +81,11 @@ export function ServicesShowcaseSection() {
                   {course.tag}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Button variant="outline" shape="pill" size="sm" className="bg-white text-black border-none font-bold">
-                    Enroll Now
-                  </Button>
+                  <Link href="/waitlist">
+                    <Button variant="outline" shape="pill" size="sm" className="bg-white text-black border-none font-bold">
+                      Join Waitlist
+                    </Button>
+                  </Link>
                 </div>
               </div>
 

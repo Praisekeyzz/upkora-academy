@@ -19,7 +19,7 @@ export default function Home() {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
-      "email": "support@upkora.com"
+      "email": "support@upkorasolutions.com"
     },
     "sameAs": [
       "https://twitter.com/upkora",

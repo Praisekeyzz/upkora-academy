@@ -44,7 +44,7 @@ export function CategoriesSection() {
     <section className="py-32 bg-white relative overflow-hidden">
       {/* Decorative background blur */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-500/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
-      
+
       <div className="page-container relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
@@ -61,7 +61,7 @@ export function CategoriesSection() {
             </p>
           </div>
           <Button variant="ghost" className="font-bold text-primary-600 hover:text-primary-700 p-0 h-auto group">
-            View All Learning Tracks 
+            View All Learning Tracks
             <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </Button>
         </div>
@@ -80,20 +80,20 @@ export function CategoriesSection() {
               <div className="h-full bg-white rounded-[2.5rem] border border-black/5 p-8 flex flex-col gap-8 shadow-sm hover:shadow-2xl hover:shadow-primary-500/10 transition-all duration-500 group relative overflow-hidden">
                 {/* Gradient background hover effect */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
+
                 <div className="relative z-10">
                   <div className={`w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
                     <category.icon className={`w-7 h-7 ${category.iconColor}`} />
                   </div>
-                  
+
                   <span className="text-[10px] font-black uppercase tracking-widest text-primary-600/60 mb-2 block font-inter">
                     {category.count}
                   </span>
-                  
+
                   <h3 className="text-2xl font-bold text-primary-950 mb-4 font-syne group-hover:text-primary-700 transition-colors">
                     {category.title}
                   </h3>
-                  
+
                   <p className="text-primary-950/50 text-sm leading-relaxed font-inter group-hover:text-primary-950/70 transition-colors">
                     {category.description}
                   </p>

@@ -12,6 +12,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata = siteMetadata;
 
+import { Toaster } from "sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.className} font-sans overflow-x-hidden antialiased`}
       >
+        <Toaster position="top-center" richColors />
         <GlassNavbar />
         {children}
         <Analytics />

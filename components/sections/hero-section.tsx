@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight, GraduationCap, Users, BookOpen, Wallet } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const features = [
   {
@@ -55,7 +56,7 @@ export function HeroSection() {
             <div className="inline-flex items-center gap-3 mb-8">
               <span className="w-8 h-0.5 bg-neon" />
               <span className="text-sm font-black uppercase tracking-[0.3em] text-neon font-inter">
-                Welcome to Upkora!
+                Welcome to Upkora Academy!
               </span>
             </div>
 
@@ -69,12 +70,14 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-5">
-              <Button variant="neon" size="lg" className="w-full sm:w-auto gap-3 group">
-                About More
-                <span className="bg-black text-neon rounded-full p-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
-                  <ArrowRight size={18} />
-                </span>
-              </Button>
+              <Link href="/waitlist" className="w-full sm:w-auto">
+                <Button variant="neon" size="lg" className="w-full gap-3 group">
+                  Join Waitlist
+                  <span className="bg-black text-neon rounded-full p-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                    <ArrowRight size={18} />
+                  </span>
+                </Button>
+              </Link>
               <Button variant="outline" size="lg" className="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white hover:text-black gap-3 group">
                 Learn More
                 <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />

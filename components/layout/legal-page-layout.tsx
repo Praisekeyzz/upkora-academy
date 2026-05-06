@@ -69,11 +69,10 @@ export function LegalPageLayout({
                   key={section.id}
                   variant="ghost"
                   onClick={() => scrollToSection(section.id)}
-                  className={`w-full justify-between p-2.5 rounded-lg text-sm transition-colors h-auto font-normal ${
-                    activeSection === section.id
+                  className={`w-full justify-between p-2.5 rounded-lg text-sm transition-colors h-auto font-normal ${activeSection === section.id
                       ? "text-heading font-semibold bg-heading/5"
                       : "text-body hover:text-heading"
-                  }`}
+                    }`}
                 >
                   <span>
                     {index + 1}. {section.title}
@@ -95,11 +94,10 @@ export function LegalPageLayout({
                 key={section.id}
                 variant="ghost"
                 onClick={() => scrollToSection(section.id)}
-                className={`w-full justify-between p-2.5 rounded-lg text-sm transition-colors h-auto font-normal ${
-                  activeSection === section.id
+                className={`w-full justify-between p-2.5 rounded-lg text-sm transition-colors h-auto font-normal ${activeSection === section.id
                     ? "text-heading font-semibold bg-heading/5"
                     : "text-body hover:text-heading"
-                }`}
+                  }`}
               >
                 <span>
                   {index + 1}. {section.title}

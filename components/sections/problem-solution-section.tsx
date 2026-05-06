@@ -31,7 +31,7 @@ export function ProblemSolutionSection() {
                 "High costs of quality education and certifications",
                 "Limited access to industry experts and mentors",
               ].map((problem, i) => (
-                <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-card border border-border shadow-sm hover:border-red-500/30 group">
+                <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-card border border-border hover:border-red-500/30 group">
                   <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center shrink-0">
                     <AlertCircle className="w-5 h-5 text-red-500" />
                   </div>
@@ -64,7 +64,7 @@ export function ProblemSolutionSection() {
                 "Affordable pricing with flexible payment options",
                 "One-on-one mentorship and active community support",
               ].map((solution, i) => (
-                <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-card border border-border shadow-sm hover:border-primary-500/30 group">
+                <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-card border border-border hover:border-primary-500/30 group">
                   <div className="w-10 h-10 rounded-full bg-primary-500/10 flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-5 h-5 text-primary-600" />
                   </div>

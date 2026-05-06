@@ -3,16 +3,24 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Search, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+import { Menu, X, Search, Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+
+const XIcon = ({ size = 24 }: { size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+  >
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.49h2.039L6.486 3.24H4.298l13.311 17.403z" />
+  </svg>
+)
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Courses", href: "#courses" },
   { name: "Academics", href: "#academics" },
-  { name: "Pages", href: "#pages" },
-  { name: "Admissions", href: "#admissions" },
-  { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
 ]
 
@@ -35,8 +43,8 @@ export function GlassNavbar() {
         <div className="bg-neon w-[30%] flex items-center justify-center gap-4 px-4">
           <span className="text-[10px] font-black uppercase tracking-widest text-black/60">Follow Us:</span>
           <div className="flex gap-3">
-            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="text-black/60 hover:text-black transition-colors">
+            {[Facebook, XIcon, Instagram, Linkedin].map((Icon, i) => (
+              <a key={i} href="#" className="text-black/60 hover:text-black transition-colors flex items-center">
                 <Icon size={14} />
               </a>
             ))}
@@ -49,7 +57,7 @@ export function GlassNavbar() {
           </div>
           <div className="flex items-center gap-2">
             <Mail size={14} className="text-neon" />
-            info@example.com
+            info@upkorasolutions.com
           </div>
           <div className="flex items-center gap-2">
             <Phone size={14} className="text-neon" />
@@ -79,9 +87,9 @@ export function GlassNavbar() {
                 className="text-sm font-bold text-primary-950/70 hover:text-primary-600 transition-colors font-inter flex items-center gap-1 group"
               >
                 {link.name}
-                {["Home", "Courses", "Pages", "Blog"].includes(link.name) && (
+                {/* {[ "Courses"].includes(link.name) && (
                   <span className="text-[10px] opacity-50 group-hover:rotate-180 transition-transform">▼</span>
-                )}
+                )} */}
               </Link>
             ))}
           </nav>
@@ -91,12 +99,14 @@ export function GlassNavbar() {
             <Button variant="ghost" size="icon" className="text-primary-950">
               <Search size={22} />
             </Button>
-            <Button variant="neon" size="default" className="gap-2 group">
-              Apply Now
-              <span className="bg-black text-neon rounded-full p-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
-                <ArrowRight size={14} />
-              </span>
-            </Button>
+            <Link href="/waitlist">
+              <Button variant="neon" size="default" className="gap-2 group">
+                Join Waitlist
+                <span className="bg-black text-neon rounded-full p-1.5 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                  <ArrowRight size={14} />
+                </span>
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -143,9 +153,11 @@ export function GlassNavbar() {
               ))}
             </div>
             <div className="mt-auto pt-10 border-t border-white/10 flex flex-col gap-6">
-              <Button variant="neon" size="xl" shape="pill" className="w-full text-xl font-syne">
-                Apply Now
-              </Button>
+              <Link href="/waitlist" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="neon" size="xl" shape="pill" className="w-full text-xl font-syne">
+                  Join Waitlist
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
