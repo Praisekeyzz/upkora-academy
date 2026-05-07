@@ -40,7 +40,7 @@
   --card-foreground: #001a00;
   --popover: #ffffff;
   --popover-foreground: #001a00;
-  --primary: #00cc00;
+  --primary: #00D900;
   /* Primary-600 for better contrast */
   --primary-foreground: #ffffff;
   --secondary: #ffef00;
@@ -54,7 +54,7 @@
   --destructive-foreground: #ffffff;
   --border: #e5e5e5;
   --input: #e5e5e5;
-  --ring: #00ff00;
+  --ring: #00D900;
   --radius: 0.75rem;
 }
 
@@ -65,7 +65,7 @@
   --card-foreground: #001a00;
   --popover: #ffffff;
   --popover-foreground: #001a00;
-  --primary: #00cc00;
+  --primary: #00D900;
   --primary-foreground: #ffffff;
   --secondary: #ffef00;
   --secondary-foreground: #1a1500;

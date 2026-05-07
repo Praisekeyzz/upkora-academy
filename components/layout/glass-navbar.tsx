@@ -24,6 +24,13 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ]
 
+const socialLinks = [
+  { name: "Facebook", href: "https://facebook.com/upkorasolutions", icon: Facebook },
+  { name: "X", href: "https://x.com/upkorasolutions", icon: XIcon },
+  { name: "Instagram", href: "https://instagram.com/upkorasolutions", icon: Instagram },
+  { name: "LinkedIn", href: "https://linkedin.com/upkorasolutions", icon: Linkedin },
+]
+
 export function GlassNavbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -43,9 +50,9 @@ export function GlassNavbar() {
         <div className="bg-neon w-[30%] flex items-center justify-center gap-4 px-4">
           <span className="text-[10px] font-black uppercase tracking-widest text-black/60">Follow Us:</span>
           <div className="flex gap-3">
-            {[Facebook, XIcon, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="text-black/60 hover:text-black transition-colors flex items-center">
-                <Icon size={14} />
+            {socialLinks.map((link, i) => (
+              <a key={i} href={link.href} className="text-black/60 hover:text-black transition-colors flex items-center">
+                <link.icon size={14} />
               </a>
             ))}
           </div>
