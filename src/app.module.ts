@@ -7,10 +7,13 @@ import { WaitlistModule } from './waitlist/waitlist.module';
 import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
 
+import { validate } from './common/config/env.config';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      validate,
     }),
     PrismaModule,
     WaitlistModule,
